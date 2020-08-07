@@ -1,0 +1,8 @@
+img {
+    height: 48px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+}
