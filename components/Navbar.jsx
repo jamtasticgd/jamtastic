@@ -4,11 +4,11 @@ const Navbar = () => {
     const theme = useTheme();
 
     return (
-        <AppBar position="fixed" color="primary">
+        <AppBar position="sticky" color="primary">
             <Toolbar className="toolbar">
                 <img src={"/images/jamtastic-logo-white.png"} alt="jamtastic" />
                 <IconButton>
-                    <Avatar />
+                    <Avatar style={{height: "40px", width: "40px"}} />
                 </IconButton>
             </Toolbar>
         </AppBar>

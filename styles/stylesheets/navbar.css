@@ -3,6 +3,8 @@ img {
 }
 
 .toolbar {
+    position: static;
+    height: 64px;
     display: flex;
     justify-content: space-between;
 }

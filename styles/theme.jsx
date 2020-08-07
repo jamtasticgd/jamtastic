@@ -8,5 +8,13 @@ export const theme = createMuiTheme({
         secondary: {
             main: "#1B62FA"
         }
+    },
+    overrides: {
+        MuiAvatar: {
+            root: {
+                height: "32px",
+                width: "32px"
+            }
+        }
     }
 })
