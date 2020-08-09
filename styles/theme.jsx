@@ -15,6 +15,11 @@ export const theme = createMuiTheme({
                 height: "32px",
                 width: "32px"
             }
+        },
+        MuiTooltip: {
+            tooltip: {
+                fontSize: "1rem"
+            }
         }
     }
 })

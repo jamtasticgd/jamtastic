@@ -1,4 +1,4 @@
-import { makeStyles, Avatar } from "@material-ui/core"
+import { makeStyles, Avatar, Tooltip } from "@material-ui/core"
 
 import Art from "@material-ui/icons/Brush"
 import Audio from "@material-ui/icons/Audiotrack"
@@ -12,21 +12,44 @@ const useStyles = makeStyles({
     }
 });
 
+//Set of analagous colors
+const colors = [
+    "#F65FFA", 
+    "#7944E3",
+    "#5788FA",
+    "#44D6E3",
+    "#4DFF96"
+]
+
 const RoleIcon = (props) => {
     let color;
     let icon;
+    let name;
     switch(props.role) {
         case "art":
-            color = "red";
+            color = colors[0]
+            name = "Artista"
             icon = <Art />
             break
         case "audio":
-            color = "blue"
+            color = colors[1]
+            name = "Audio Designer"
             icon = <Audio />
             break
         case "code":
-            color = "green"
+            color = colors[2]
+            name = "Programador"
             icon = <Code />
+            break
+        case "game_design":
+            color = colors[3]
+            name = "Game Designer"
+            icon = <Design />
+            break
+        case "writing":
+            color = colors[4]
+            name = "Escritor"
+            icon = <Writing />
             break
         default:
             color = "white" 
@@ -34,7 +57,13 @@ const RoleIcon = (props) => {
 
     const classes = useStyles({...props, color});
 
-    return <Avatar className={classes.root} >{icon}</Avatar>
+    return (
+        <Tooltip title={name}> 
+            <Avatar className={classes.root} >
+                {icon}
+            </Avatar>
+        </Tooltip>
+    )
 }
 
 export default RoleIcon;

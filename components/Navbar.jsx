@@ -7,8 +7,8 @@ const Navbar = () => {
         <AppBar position="sticky" color="primary">
             <Toolbar className="toolbar">
                 <img src={"/images/jamtastic-logo-white.png"} alt="jamtastic" />
-                <IconButton>
-                    <Avatar style={{height: "40px", width: "40px"}} />
+                <IconButton style={{height: "60px", width: "60px"}}>
+                    <Avatar style={{height: "48px", width: "48px"}} />
                 </IconButton>
             </Toolbar>
         </AppBar>
