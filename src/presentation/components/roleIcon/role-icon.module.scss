@@ -1,7 +1,10 @@
 @import "../../styles/colors.scss";
 
-.tooltip {
-    font-size: 1rem;
+div[role=tooltip] {
+
+    > div {
+        font-size: 1rem;
+    }
 }
 
 .icon {
@@ -21,7 +24,7 @@
         background-color: $code;
     }
     
-    &.game-design {
+    &.gameDesign {
         background-color: $gameDesign;
     }
     

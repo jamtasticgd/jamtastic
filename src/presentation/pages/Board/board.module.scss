@@ -3,4 +3,19 @@
 
 .container {
     padding: 16px;
+    padding-top: 80px;
+
+    .board {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        justify-content: space-around;
+        padding: 8px 0px;
+
+        > div {
+            margin: 8px 0px;
+        }
+    }
+
 }
