@@ -6,7 +6,7 @@ const teamCardMocks = [...Array(faker.random.number(20))].map(() => {
 		title: faker.company.companyName(),
 		description: faker.lorem.sentence(30, 5),
 		members: [...Array(faker.random.number({min: 1, max: 5}))].map(() => faker.name.firstName()),
-		searching: [...Array(faker.random.number({min: 1, max: 3}))].map(() => roleList[faker.random.number(4)])
+		searching: roleList.map(role => { return {[role]: faker.random.number(4)} })
 	}
 })
 

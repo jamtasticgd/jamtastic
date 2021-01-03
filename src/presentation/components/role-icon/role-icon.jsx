@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Avatar, Tooltip } from '@material-ui/core'
+import { Avatar, Badge, Tooltip } from '@material-ui/core'
 import Art from '@material-ui/icons/Brush'
 import Audio from '@material-ui/icons/Audiotrack'
 import Code from '@material-ui/icons/Code'
@@ -10,7 +10,7 @@ import Writing from '@material-ui/icons/Create'
 
 import { tooltip, icon, art, audio, code, gameDesign, writing } from './role-icon.module.scss'
 
-const RoleIcon = ({skill}) => {
+const RoleIcon = ({skill, value = 0}) => {
 	let name
 	let style = ''
 	let component
@@ -46,16 +46,21 @@ const RoleIcon = ({skill}) => {
 	} 
 
 	return (
-		<Tooltip title={name} className={tooltip}> 
-			<Avatar className={icon + ' ' + style}>
-				{component}
-			</Avatar>
+		//eslint-disable-next-line
+		<Tooltip title={name} className={tooltip} children={
+			<Badge anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} color='secondary' overlap='circle' badgeContent={value}>
+				<Avatar className={icon + ' ' + style}>
+					{component}
+				</Avatar>
+			</Badge>
+		}>
 		</Tooltip>
 	)
 }
 
 RoleIcon.propTypes = {
-	skill: PropTypes.oneOf(['art', 'audio', 'code', 'game_design', 'writing'])
+	skill: PropTypes.oneOf(['art', 'audio', 'code', 'game_design', 'writing']),
+	value: PropTypes.number
 }
 
 export default RoleIcon

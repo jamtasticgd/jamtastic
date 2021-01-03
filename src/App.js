@@ -10,11 +10,9 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Navbar />
-			<body>
-				<Switch>
-					<Route path="/" component={Board} />
-				</Switch>
-			</body>
+			<Switch>
+				<Route path="/" component={Board} />
+			</Switch>
 		</BrowserRouter>
 	)
 }
