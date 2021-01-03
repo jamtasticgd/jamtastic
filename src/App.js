@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import './App.scss'
 
 import Navbar from './presentation/components/navbar/navbar'
-import Board from './presentation/pages/Board'
+import Board from './presentation/pages/Board/board'
 
 function App() {
 	return (
