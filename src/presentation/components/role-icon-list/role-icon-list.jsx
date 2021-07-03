@@ -4,6 +4,8 @@ import  PropTypes from 'prop-types'
 import RoleIcon from '../role-icon/role-icon'
 import { IconButton } from '@material-ui/core'
 
+import { container, button } from './role-icon-list.module.scss'
+
 import roleList from '../../../data/mocked-values/role-list-mock'
 
 const RoleIconList = ({ roles, clickable }) => {
@@ -11,7 +13,7 @@ const RoleIconList = ({ roles, clickable }) => {
     
 	if(clickable) {
 		list = roleList.map((role) => 
-			<IconButton size='small' onClick={() => roles.toggleValue(role)} key={role}>
+			<IconButton key={role} size='small' className={button} onClick={() => roles.toggleValue(role)}>
 				<RoleIcon key={role} skill={role} clickable={true} active={roles.value.indexOf(role) !== -1} />
 			</IconButton>
 		)
@@ -26,7 +28,9 @@ const RoleIconList = ({ roles, clickable }) => {
 		})
 	}
 
-	return list
+	return (
+		<div className={container}>{list}</div>
+	)
 }
 
 RoleIconList.propTypes = {

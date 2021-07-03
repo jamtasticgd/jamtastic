@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Card, Button } from '@material-ui/core'
 import RoleIconList from '../../components/role-icon-list/role-icon-list'
+
 import { container, button } from './team-manager.module.scss'
 
 const TeamManager = ({ roles }) => (
