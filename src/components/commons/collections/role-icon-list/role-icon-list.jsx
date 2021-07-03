@@ -1,12 +1,13 @@
 import React from 'react'
 import  PropTypes from 'prop-types'
 
-import RoleIcon from '../role-icon/role-icon'
 import { IconButton } from '@material-ui/core'
+
+import RoleIcon from 'components/commons/atomics/role-icon/role-icon'
 
 import { container, button } from './role-icon-list.module.scss'
 
-import roleList from '../../../data/mocked-values/role-list-mock'
+import roleList from 'data/mocked-values/role-list-mock'
 
 const RoleIconList = ({ roles, clickable }) => {
 	let list
