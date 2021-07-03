@@ -1,1 +1,10 @@
-@import './presentation//styles/colors.scss'
+@import './presentation/styles/colors.scss';
+
+$navbarHeight: 64px;
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: $background;
+}

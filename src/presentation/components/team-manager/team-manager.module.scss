@@ -1,0 +1,27 @@
+@import "../../styles/colors.scss";
+@import "../../../App.scss";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 16px;
+    max-width: 1000px;
+    width: 100%;
+
+    .button {
+        width: 160px;
+        height: 40px;
+        background-color: $secondary;
+        color: white;
+        margin-right: 80px;
+
+        &:hover {
+            background-color: $secondary-light;
+        }
+    }
+
+    h3 {
+        margin-right: 12px;
+    }
+}
