@@ -2,33 +2,33 @@
 
 div[role=tooltip] {
 
-    > div {
-        font-size: 1rem;
-    }
+  >div {
+    font-size: 1rem;
+  }
 }
 
 .icon {
-    width: 32px;
-    height: 32px;
-    background-color: $inactive;
+  width: 36px;
+  height: 36px;
+  background-color: $inactive;
 
-    &.art {
-        background-color: $art;
-    }
-    
-    &.audio {
-        background-color: $audio;
-    }
-    
-    &.code {
-        background-color: $code;
-    }
-    
-    &.gameDesign {
-        background-color: $gameDesign;
-    }
-    
-    &.writing {
-        background-color: $writing;
-    }
+  &.art {
+    background-color: $art;
+  }
+
+  &.audio {
+    background-color: $audio;
+  }
+
+  &.code {
+    background-color: $code;
+  }
+
+  &.gameDesign {
+    background-color: $gameDesign;
+  }
+
+  &.writing {
+    background-color: $writing;
+  }
 }
