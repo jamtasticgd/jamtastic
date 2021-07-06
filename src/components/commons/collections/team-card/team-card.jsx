@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Card, Avatar, Button } from '@material-ui/core'
+import { Button, Card, Avatar } from '@material-ui/core'
 import RoleIconList from '../role-icon-list/role-icon-list'
 
-import { container, membersRow, btnContainer, button, lastLine } from './team-card.module.scss'
+import { container, membersRow, btnContainer, lastLine } from './team-card.module.scss'
 
 const TeamCard = ({data}) => {
 	return (
@@ -19,7 +19,7 @@ const TeamCard = ({data}) => {
 			<div className={lastLine}>
 				<RoleIconList roles={data.searching} />		
 				<div className={btnContainer}>
-					<Button size="small" variant="contained" className={button}>Detalhes</Button>
+					<Button variant="contained" color="secondary">Detalhes</Button>
 				</div>
 			</div>
 		</Card>

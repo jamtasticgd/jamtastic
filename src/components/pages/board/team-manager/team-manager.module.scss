@@ -17,16 +17,10 @@
   .button {
     width: 160px;
     height: 40px;
-    background-color: $secondary;
-    color: white;
     margin-right: 80px;
 
     @media (max-width: $tablet) {
       margin-right: 0;
-    }
-
-    &:hover {
-      background-color: $secondary-light;
     }
   }
 

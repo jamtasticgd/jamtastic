@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { Card, Button } from '@material-ui/core'
+import { Button, Card } from '@material-ui/core'
+
 import RoleIconList from 'components/commons/collections/role-icon-list/role-icon-list'
 
 import { container, button } from './team-manager.module.scss'
@@ -17,7 +18,7 @@ const TeamManager = ({ roles }) => {
 	return (
 		<>
 			<Card className={container}>
-				<Button size="small" variant="contained" className={button} onClick={() => setOpenModal(!openModal)} >Crie seu time</Button>
+				<Button variant="contained" color="secondary" className={button} onClick={() => setOpenModal(!openModal)} >Crie seu time</Button>
 				<h3>Ou procure um para exercitar suas habilidades:</h3>
 				<RoleIconList clickable={true} roles={roles} />
 			</Card>

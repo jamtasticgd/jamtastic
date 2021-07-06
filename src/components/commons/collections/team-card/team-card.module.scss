@@ -40,14 +40,5 @@
 
   .btnContainer {
     display: flex;
-
-    button {
-      background-color: $secondary;
-      color: white;
-
-      &:hover {
-        background-color: $secondary-light;
-      }
-    }
   }
 }
