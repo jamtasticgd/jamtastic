@@ -1,21 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 
+import { useField } from '@unform/core'
+
 import { TextField, InputAdornment, IconButton } from '@material-ui/core'
-import { useState } from 'react'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
 
-const TextInput = ({ label, type, value, onChange }) => {
+const TextInput = ({ name, label, type }) => {
 	const [visibility, setVisibility] = useState(false)
+	const inputRef = useRef()
+
+	const { fieldName, defaultValue, registerField, error, clearError } = useField(name)
+
+	useEffect(() => {
+		registerField({
+			name: fieldName,
+			ref: inputRef,
+			getValue: ref => {
+				return ref.current.value
+			},
+			setValue: (ref, value) => {
+				ref.current.value = value
+			},
+			clearValue: ref => {
+				ref.current.value = ''
+			}
+		})
+	}, [fieldName, registerField])
 
 	return (
 		<TextField 
 			size="small" 
 			variant="filled" 
 			type={visibility ? 'text' : type} 
+			id={fieldName}
 			label={label} 
-			value={value} 
-			onChange={onChange}
+			error={error}
+			helperText={error}
+			onFocus={clearError}
+			defaultValue={defaultValue}
 			color="secondary"
 			InputLabelProps={{ shrink: true }}
 			InputProps={{
@@ -28,15 +51,17 @@ const TextInput = ({ label, type, value, onChange }) => {
 					</InputAdornment>
 				)
 			}}
+			inputProps={{
+				ref: inputRef
+			}}
 		/>
 	)
 }
 
 TextInput.propTypes = {
+	name: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
-	type: PropTypes.oneOf(['text', 'email', 'password', 'telegram']).isRequired,
-	value: PropTypes.string.isRequired,
-	onChange: PropTypes.func.isRequired
+	type: PropTypes.oneOf(['text', 'email', 'password', 'telegram']).isRequired
 }
 
 export default TextInput

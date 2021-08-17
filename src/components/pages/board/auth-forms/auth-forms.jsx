@@ -8,9 +8,6 @@ import RegisterForm from './forms/register/register'
 
 const AuthForms = ({ open, onClose }) => {
 	const [step, setStep] = useState('login')
-	const [password, setPassword] = useState()
-	const [passwordConfirm, setPasswordConfirm] = useState('')
-	const [telegram, setTelegram] = useState('')
 
 	useEffect(() => {
 		if(open) {
@@ -21,13 +18,17 @@ const AuthForms = ({ open, onClose }) => {
 	function goToRegister() {
 		setStep('register')
 	}
+
+	function goToLogin() {
+		setStep('login')
+	}
   
 	return (
 		<Dialog open={open} onClose={onClose}>
 			{step === 'login' ?
 				<LoginForm goToRegister={goToRegister} />
 				:
-				<RegisterForm />
+				<RegisterForm goToLogin={goToLogin} />
 			}
 		</Dialog>
 	)

@@ -1,5 +1,5 @@
 import axios from 'axios'
 
-axios.create({
-	baseURL: 'https://jamtastic-api-staging.herokuapp.com'
+export default axios.create({
+	baseURL: process.env.REACT_APP_API_BASE_URL
 })
