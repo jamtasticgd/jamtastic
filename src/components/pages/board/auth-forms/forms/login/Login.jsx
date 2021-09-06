@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
-
-
 import { Button, Checkbox, FormControlLabel } from '@material-ui/core'
 
-import { useRef } from 'react'
-import { container, form, revalidationButtons } from '../forms.module.scss'
 import TextInput from 'components/commons/atomics/text-input/text-input'
+
 import { login } from 'services/axios/auth-api-calls'
 
-const LoginForm = ({ goToRegister }) => {
+import { container, form, revalidationButtons } from '../forms.module.scss'
+import { useUserContext } from 'contexts/UserContext'
+import { getStateFromStorage } from 'helpers/storage'
+
+const LoginForm = ({ goToRegister, goToConfirmation, onClose }) => {
 	const formRef = useRef(null)
+	const { setName } = useUserContext()
 	const [rememberLogin, setRememberLogin] = useState(false)
 
 	async function onSubmit(data) {
@@ -26,7 +28,9 @@ const LoginForm = ({ goToRegister }) => {
 				abortEarly: false
 			})
 
-			await login(data, rememberLogin)
+			await login(data, rememberLogin, () => setName(getStateFromStorage('name')))
+			onClose()
+			
 		} catch (error) {
 			if(error instanceof Yup.ValidationError) {
 				const errorMessages = {}
@@ -37,7 +41,7 @@ const LoginForm = ({ goToRegister }) => {
 				
 				formRef.current.setErrors(errorMessages)
 			}
-		}		
+		}
 	}
 
 	return (
@@ -53,7 +57,14 @@ const LoginForm = ({ goToRegister }) => {
 			</Form>
 			<div className={revalidationButtons}>
 				<Button variant="text" color="secondary" size="small">Esqueci minha senha</Button>
-				<Button variant="text" color="secondary" size="small">Confirmar meu cadastro</Button>
+				<Button 
+					variant="text" 
+					color="secondary" 
+					size="small"
+					onClick={goToConfirmation}
+				>
+						Confirmar meu cadastro
+				</Button>
 			</div>
 			<Button variant="text" color="secondary" onClick={goToRegister}>Ou registre-se!</Button>
 		</div>
@@ -61,7 +72,9 @@ const LoginForm = ({ goToRegister }) => {
 }
 
 LoginForm.propTypes = {
-	goToRegister: PropTypes.func.isRequired
+	goToRegister: PropTypes.func.isRequired,
+	goToConfirmation: PropTypes.func.isRequired,
+	onClose: PropTypes.func.isRequired
 }
 
 export default LoginForm

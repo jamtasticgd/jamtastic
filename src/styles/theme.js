@@ -8,7 +8,7 @@ const theme = createMuiTheme({
 		secondary: {
 			main: '#1B62FA'
 		}
-	},
+	}
 })
 
 export default theme
