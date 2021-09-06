@@ -26,3 +26,13 @@ export async function login(data, rememberLogin, successCallback = () => {}) {
 			toast.error(error.response.data.errors[0])
 		})
 }
+
+export async function resendConfirmation(data) {
+	axios.post('users/confirmation', data)
+		.then(response => {
+			toast.success(response.data.message)
+		})
+		.catch(error => {
+			toast.error(error.response.data.errors[0])
+		})
+}

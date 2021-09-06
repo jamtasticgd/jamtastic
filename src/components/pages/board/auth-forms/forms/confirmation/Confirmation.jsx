@@ -8,6 +8,7 @@ import TextInput from 'components/commons/atomics/text-input/text-input'
 
 
 import { container, form } from '../forms.module.scss'
+import { resendConfirmation } from 'services/axios/auth-api-calls'
 
 const ConfirmationForm = ({ goToLogin, onClose }) => {
 	const formRef = useRef(null)
@@ -22,8 +23,8 @@ const ConfirmationForm = ({ goToLogin, onClose }) => {
 				abortEarly: false
 			})
 
-			
-			onClose()
+			await resendConfirmation(data)
+			goToLogin()
 			
 		} catch (error) {
 			if(error instanceof Yup.ValidationError) {
