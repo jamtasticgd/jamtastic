@@ -1,0 +1,11 @@
+@import "styles/breakpoints.scss";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button {
+  padding: 0 !important;
+}
