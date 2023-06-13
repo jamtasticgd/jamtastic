@@ -10,7 +10,7 @@ import Writing from '@material-ui/icons/Create'
 
 import { tooltip, icon, art, audio, code, gameDesign, writing } from './role-icon.module.scss'
 
-const RoleIcon = ({skill, value = 0, clickable=false, active=true }) => {
+const RoleIcon = ({skill, active=true }) => {
 	let name
 	let style = ''
 	let component
@@ -50,7 +50,7 @@ const RoleIcon = ({skill, value = 0, clickable=false, active=true }) => {
 	return (
 		//eslint-disable-next-line
 		<Tooltip title={name} className={tooltip} children={
-			<Badge anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} color='secondary' overlap='circle' badgeContent={clickable? 0 : value}>
+			<Badge anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} color='secondary' overlap='circle'>
 				<Avatar className={icon + ' ' + style}>
 					{component}
 				</Avatar>
@@ -62,7 +62,6 @@ const RoleIcon = ({skill, value = 0, clickable=false, active=true }) => {
 
 RoleIcon.propTypes = {
 	skill: PropTypes.oneOf(['art', 'audio', 'code', 'game_design', 'writing']),
-	value: PropTypes.number,
 	clickable: PropTypes.bool,
 	active: PropTypes.bool
 }

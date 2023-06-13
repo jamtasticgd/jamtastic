@@ -4,7 +4,7 @@ import { RegisterSuccess } from 'services/toastify/messages'
 
 export async function registerUser(data) {
 	axios.post('users', data)
-		.then(() => 
+		.then(() =>
 			toast.success(RegisterSuccess)
 		)
 		.catch(error => {

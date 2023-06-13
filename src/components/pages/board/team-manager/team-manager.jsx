@@ -32,4 +32,3 @@ TeamManager.propTypes = {
 }
 
 export default TeamManager
-

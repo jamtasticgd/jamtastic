@@ -11,21 +11,18 @@ import roleList from 'data/mocked-values/role-list-mock'
 
 const RoleIconList = ({ roles, clickable }) => {
 	let list
-    
+
 	if(clickable) {
-		list = roleList.map((role) => 
+		list = roleList.map((role) =>
 			<IconButton key={role} size='small' className={button} onClick={() => roles.toggleValue(role)}>
-				<RoleIcon key={role} skill={role} clickable={true} active={roles.value.indexOf(role) !== -1} />
+				<RoleIcon key={role} skill={role} active={roles.value.indexOf(role) !== -1} />
 			</IconButton>
 		)
 
 	}
 	else {
-		list = Object.keys(roles).map((role) => {
-			let value = roles[role]
-			if(value) {
-				return <RoleIcon key={role} skill={role} value={value} />
-			}
+		list = roles.value.map((role) => {
+			return <RoleIcon key={role} skill={role} />
 		})
 	}
 
