@@ -1,6 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals'
 import { ToastContainer } from 'react-toastify'
 
@@ -15,7 +15,10 @@ import UserContextProvider from 'contexts/UserContext'
 
 import theme from 'styles/theme'
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container)
+
+root.render(
 	<React.StrictMode>
 		<LoaderContextProvider>
 			<UserContextProvider>
@@ -23,15 +26,14 @@ ReactDOM.render(
 					<BrowserRouter>
 						<Navbar />
 						<ToastContainer autoClose={false} />
-						<Switch>
-							<Route path="/" component={Board} />
-						</Switch>
+						<Routes>
+							<Route path="/" element={<Board />} />
+						</Routes>
 					</BrowserRouter>
 				</ThemeProvider>
 			</UserContextProvider>
 		</LoaderContextProvider>
-	</React.StrictMode>,
-	document.getElementById('root')
+	</React.StrictMode>
 )
 
 reportWebVitals()

@@ -1,17 +1,16 @@
 import { useLoaderContext } from 'contexts/LoaderContext'
 import React from 'react'
-import Loader from 'react-loader-spinner'
+import { Puff } from 'react-loader-spinner'
 
-import { container } from './loader-layer.module.scss'
+import styles from './loader-layer.module.scss'
 
 const LoaderLayer = () => {
 	const isLoading = useLoaderContext()
 
 	if (isLoading) {
 		return (
-			<div className={container}>
-				<Loader
-					type="Puff"
+			<div className={styles.container}>
+				<Puff
 					height={100}
 					width={100}
 					visible={true}

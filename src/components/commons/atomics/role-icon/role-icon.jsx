@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Avatar, Badge, Tooltip } from '@material-ui/core'
-import Art from '@material-ui/icons/Brush'
-import Audio from '@material-ui/icons/Audiotrack'
-import Code from '@material-ui/icons/Code'
-import GameDesign from '@material-ui/icons/Extension'
-import Writing from '@material-ui/icons/Create'
+import BrushIcon from '@material-ui/icons/Brush'
+import AudiotrackIcon from '@material-ui/icons/Audiotrack'
+import CodeIcon from '@material-ui/icons/Code'
+import ExtensionIcon from '@material-ui/icons/Extension'
+import CreateIcon from '@material-ui/icons/Create'
 
-import { tooltip, icon, art, audio, code, gameDesign, writing } from './role-icon.module.scss'
+import styles from './role-icon.module.scss'
 
 const RoleIcon = ({skill, active=true }) => {
 	let name
@@ -18,28 +18,28 @@ const RoleIcon = ({skill, active=true }) => {
 	switch(skill) {
 	case 'art':
 		name = 'Artista'
-		style = art
-		component = <Art />
+		style = styles.art
+		component = <BrushIcon />
 		break
 	case 'audio':
 		name = 'Audio Designer'
-		style = audio
-		component = <Audio />
+		style = styles.audio
+		component = <AudiotrackIcon />
 		break
 	case 'code':
 		name = 'Programador'
-		style = code
-		component = <Code />
+		style = styles.code
+		component = <CodeIcon />
 		break
 	case 'game_design':
 		name = 'Game Designer'
-		style = gameDesign
-		component = <GameDesign />
+		style = styles.gameDesign
+		component = <ExtensionIcon />
 		break
 	case 'writing':
 		name = 'Escritor'
-		style = writing
-		component = <Writing />
+		style = styles.writing
+		component = <CreateIcon />
 		break
 	default:
 		style = ''
@@ -49,9 +49,9 @@ const RoleIcon = ({skill, active=true }) => {
 
 	return (
 		//eslint-disable-next-line
-		<Tooltip title={name} className={tooltip} children={
-			<Badge anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} color='secondary' overlap='circle'>
-				<Avatar className={icon + ' ' + style}>
+		<Tooltip title={name} className={styles.tooltip} children={
+			<Badge anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} color='secondary' overlap='circular'>
+				<Avatar className={styles.icon + ' ' + style}>
 					{component}
 				</Avatar>
 			</Badge>

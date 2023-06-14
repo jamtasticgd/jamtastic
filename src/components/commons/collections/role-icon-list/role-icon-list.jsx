@@ -5,7 +5,7 @@ import { IconButton } from '@material-ui/core'
 
 import RoleIcon from 'components/commons/atomics/role-icon/role-icon'
 
-import { container, button } from './role-icon-list.module.scss'
+import styles from './role-icon-list.module.scss'
 
 import roleList from 'data/mocked-values/role-list-mock'
 
@@ -14,7 +14,7 @@ const RoleIconList = ({ roles, clickable }) => {
 
 	if(clickable) {
 		list = roleList.map((role) =>
-			<IconButton key={role} size='small' className={button} onClick={() => roles.toggleValue(role)}>
+			<IconButton key={role} size='small' className={styles.button} onClick={() => roles.toggleValue(role)}>
 				<RoleIcon key={role} skill={role} active={roles.value.indexOf(role) !== -1} />
 			</IconButton>
 		)
@@ -27,7 +27,7 @@ const RoleIconList = ({ roles, clickable }) => {
 	}
 
 	return (
-		<div className={container}>{list}</div>
+		<div className={styles.container}>{list}</div>
 	)
 }
 

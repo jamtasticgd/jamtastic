@@ -8,7 +8,7 @@ import TextInput from 'components/commons/atomics/text-input/text-input'
 
 import { registerUser } from 'services/axios/auth-api-calls'
 
-import { container, form } from '../forms.module.scss'
+import styles from '../forms.module.scss'
 
 const RegisterForm = ({ goToLogin, onClose }) => {
 	const formRef = useRef(null)
@@ -22,11 +22,11 @@ const RegisterForm = ({ goToLogin, onClose }) => {
 				password: Yup.string().min(6, 'A senha deve possuir no mínimo 6  caracteres').required('Senha obrigatória'),
 				password_confirmation: Yup.string().oneOf([Yup.ref('password'), null], 'As senhas não batem')
 			})
-	
+
 			await validate.validate(data, {
 				abortEarly: false
 			})
-			
+
 			await registerUser(data)
 			onClose()
 
@@ -37,16 +37,16 @@ const RegisterForm = ({ goToLogin, onClose }) => {
 				error.inner.forEach(err => {
 					errorMessages[err.path] = err.message
 				})
-				
+
 				formRef.current.setErrors(errorMessages)
 			}
-		}		
+		}
 	}
 
 	return (
-		<div className={container}>
+		<div className={styles.container}>
 			<h1>Seja bem vindo!</h1>
-			<Form ref={formRef} className={form} onSubmit={onSubmit}>
+			<Form ref={formRef} className={styles.form} onSubmit={onSubmit}>
 				<TextInput label="Nome" type="text" name="name"  />
 				<TextInput label="Email" type="text" name="email"  />
 				<TextInput label="Telegram" type="telegram" name="telegram"  />

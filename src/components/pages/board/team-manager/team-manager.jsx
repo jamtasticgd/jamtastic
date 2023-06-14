@@ -5,7 +5,7 @@ import { Button, Card } from '@material-ui/core'
 
 import RoleIconList from 'components/commons/collections/role-icon-list/role-icon-list'
 
-import { container, button } from './team-manager.module.scss'
+import styles from './team-manager.module.scss'
 import AuthForms from '../auth-forms/auth-forms'
 
 const TeamManager = ({ roles }) => {
@@ -17,8 +17,8 @@ const TeamManager = ({ roles }) => {
 
 	return (
 		<>
-			<Card className={container}>
-				<Button variant="contained" color="secondary" className={button} onClick={() => setOpenModal(!openModal)} >Crie seu time</Button>
+			<Card className={styles.container}>
+				<Button variant="contained" color="secondary" className={styles.button} onClick={() => setOpenModal(!openModal)} >Crie seu time</Button>
 				<h3>Ou procure um para exercitar suas habilidades:</h3>
 				<RoleIconList clickable={true} roles={roles} />
 			</Card>

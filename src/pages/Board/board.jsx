@@ -1,6 +1,6 @@
 import { getTeams } from 'services/axios/public-api-calls'
 import React, { useEffect, useState } from 'react'
-import { container, board } from './board.module.scss'
+import styles from './board.module.scss'
 import TeamManager from 'components/pages/board/team-manager/team-manager'
 import TeamCard from 'components/commons/collections/team-card/team-card'
 
@@ -18,9 +18,9 @@ const Board = () => {
 	}, [])
 
 	return (
-		<div className={container}>
+		<div className={styles.container}>
 			<TeamManager roles={roles} />
-			<div className={board}>
+			<div className={styles.board}>
 				{teams.map((card, index) => {
 					return <TeamCard key={card.title + '-' + index} data={card} />
 				})}

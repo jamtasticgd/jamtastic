@@ -7,7 +7,7 @@ import { Button } from '@material-ui/core'
 import TextInput from 'components/commons/atomics/text-input/text-input'
 
 
-import { container, form } from '../forms.module.scss'
+import styles from '../forms.module.scss'
 import { resendConfirmation } from 'services/axios/auth-api-calls'
 
 const ConfirmationForm = ({ goToLogin, onClose }) => {
@@ -18,14 +18,14 @@ const ConfirmationForm = ({ goToLogin, onClose }) => {
 			const validate = Yup.object().shape({
 				email: Yup.string().email('Digite um e-mail válido').required('E-mail obrigatório'),
 			})
-	
+
 			await validate.validate(data, {
 				abortEarly: false
 			})
 
 			await resendConfirmation(data)
 			goToLogin()
-			
+
 		} catch (error) {
 			if(error instanceof Yup.ValidationError) {
 				const errorMessages = {}
@@ -33,16 +33,16 @@ const ConfirmationForm = ({ goToLogin, onClose }) => {
 				error.inner.forEach(err => {
 					errorMessages[err.path] = err.message
 				})
-				
+
 				formRef.current.setErrors(errorMessages)
 			}
 		}
 	}
 
 	return (
-		<div className={container}>
+		<div className={styles.container}>
 			<h1>Insira seu email!</h1>
-			<Form ref={formRef} className={form} onSubmit={onSubmit}>
+			<Form ref={formRef} className={styles.form} onSubmit={onSubmit}>
 				<TextInput label="Email" type="text" name="email"  />
 				<Button variant="contained" color="secondary" type="submit">Enviar</Button>
 			</Form>
