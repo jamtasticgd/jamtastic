@@ -24,6 +24,7 @@ const ConfirmationForm = ({ goToLogin, onClose }) => {
 			})
 
 			await resendConfirmation(data)
+			onClose()
 			goToLogin()
 
 		} catch (error) {
