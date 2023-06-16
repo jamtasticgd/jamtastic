@@ -6,7 +6,7 @@ import { Button, Checkbox, FormControlLabel } from '@material-ui/core'
 
 import TextInput from 'components/commons/atomics/text-input/text-input'
 
-import { login } from 'services/axios/auth-api-calls'
+import { login } from 'services/axios/auth-api-calls/users'
 
 import styles from '../forms.module.scss'
 import { useUserContext } from 'contexts/UserContext'

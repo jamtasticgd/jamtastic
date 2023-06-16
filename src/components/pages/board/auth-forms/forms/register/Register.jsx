@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core'
 
 import TextInput from 'components/commons/atomics/text-input/text-input'
 
-import { registerUser } from 'services/axios/auth-api-calls'
+import { registerUser } from 'services/axios/auth-api-calls/users'
 
 import styles from '../forms.module.scss'
 

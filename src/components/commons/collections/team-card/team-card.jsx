@@ -22,9 +22,9 @@ const TeamCard = ({ data }) => {
 				<p>{data.description}</p>
 				<h3>Membros:</h3>
 				<div className={styles.membersRow}>
-					{[...data.members, data.owner].map(member =>
-						<Tooltip key={member.name} title={member.name}>
-							<Avatar src={member.name} alt={member.name} />
+					{data.members.map(member =>
+						<Tooltip key={member.user.name} title={member.user.name}>
+							<Avatar src={member.user.name} alt={member.user.name} />
 						</Tooltip>
 					)}
 				</div>
