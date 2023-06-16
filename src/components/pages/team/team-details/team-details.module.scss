@@ -1,0 +1,17 @@
+@import "styles/colors.scss";
+@import "styles//breakpoints.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 420px;
+  padding: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
