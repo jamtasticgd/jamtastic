@@ -6,8 +6,13 @@ import { useArrayHandler } from 'hooks/use-array-handler'
 import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import { Button, Dialog, Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core'
 import styles from './team-details.module.scss'
+import { joinTeam } from 'services/axios/auth-api-calls/teams'
 
 const TeamDetails = ({ data, open, onClose }) => {
+	async function onJoinTeamClick() {
+		joinTeam(data)
+	}
+
 	return (
 		<Dialog open={open} onClose={onClose}>
 			<div className={styles.container}>
@@ -16,12 +21,12 @@ const TeamDetails = ({ data, open, onClose }) => {
 				<h2>Membros</h2>
 
 				<List>
-					{[...data.members, data.owner].map(member =>
-						<ListItem key={member.name}>
+					{[...data.members].map(member =>
+						<ListItem key={member.user.name}>
 							<ListItemAvatar>
-								<Avatar src={member.name} alt={member.name} />
+								<Avatar src={member.user.name} alt={member.user.name} />
 							</ListItemAvatar>
-							<ListItemText primary={member.name} />
+							<ListItemText primary={member.user.name} />
 						</ListItem>
 					)}
 				</List>
@@ -32,7 +37,7 @@ const TeamDetails = ({ data, open, onClose }) => {
 					</ListItem>
 				</List>
 				<div className={styles.btnContainer}>
-					<Button variant="contained" color="secondary" startIcon={<PersonAddIcon />}>
+					<Button variant="contained" color="secondary" startIcon={<PersonAddIcon />} onClick={onJoinTeamClick}>
 						Participar do time
 					</Button>
 				</div>
