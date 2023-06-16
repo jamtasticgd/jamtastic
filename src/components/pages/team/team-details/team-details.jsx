@@ -9,7 +9,7 @@ import styles from './team-details.module.scss'
 import { joinTeam } from 'services/axios/auth-api-calls/teams'
 
 const TeamDetails = ({ data, open, onClose }) => {
-	async function onJoinTeamClick() {
+	function onJoinTeamClick() {
 		joinTeam(data)
 	}
 
