@@ -13,12 +13,12 @@ export async function registerUser(data) {
 }
 
 export async function login(data, rememberLogin, successCallback = () => {}) {
+	const storage = rememberLogin ? localStorage : sessionStorage
+	storage.setItem('rememberLogin', rememberLogin)
+
 	axios.post('users/sign_in', data)
 		.then(response => {
-			const storage = rememberLogin ? localStorage : sessionStorage
-
-			persistUserData(storage, response.data.data['name'])
-			persistSessionToken(sessionStorage, response.headers)
+			persistUserData(storage, response.data.data)
 			successCallback()
 		})
 		.catch(error => {
@@ -36,8 +36,8 @@ export async function resendConfirmation(data) {
 		})
 }
 
-export async function persistUserData(storage, userFirstName) {
-	storage.setItem('name', userFirstName)
+export async function persistUserData(storage, userData) {
+	storage.setItem('name', userData.name)
 }
 
 export async function persistSessionToken(storage, headers) {
