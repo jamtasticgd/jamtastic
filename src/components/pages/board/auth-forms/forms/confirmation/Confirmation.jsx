@@ -8,7 +8,7 @@ import TextInput from 'components/commons/atomics/text-input/text-input'
 
 
 import styles from '../forms.module.scss'
-import { resendConfirmation } from 'services/axios/auth-api-calls'
+import { resendConfirmation } from 'services/axios/auth-api-calls/users'
 
 const ConfirmationForm = ({ goToLogin, onClose }) => {
 	const formRef = useRef(null)
