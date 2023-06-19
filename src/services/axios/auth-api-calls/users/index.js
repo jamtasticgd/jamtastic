@@ -1,6 +1,7 @@
 import axios from '../../axios'
 import { toast } from 'react-toastify'
 import { RegisterSuccess } from 'services/toastify/messages'
+import { getStorage } from 'helpers/storage'
 
 export async function registerUser(data) {
 	axios.post('users', data)
@@ -12,7 +13,7 @@ export async function registerUser(data) {
 		})
 }
 
-export async function login(data, rememberLogin, successCallback = () => {}) {
+export async function login(data, rememberLogin, successCallback = () => { }) {
 	const storage = rememberLogin ? localStorage : sessionStorage
 	storage.setItem('rememberLogin', rememberLogin)
 
@@ -24,6 +25,15 @@ export async function login(data, rememberLogin, successCallback = () => {}) {
 		.catch(error => {
 			toast.error(error.response.data.errors[0])
 		})
+}
+
+export async function logout() {
+	axios.delete('users/sign_out').then(() => {
+		getStorage().clear()
+
+		toast.success('Você se desconectou da sua conta.')
+	}
+	)
 }
 
 export async function resendConfirmation(data) {
