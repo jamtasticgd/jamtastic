@@ -6,8 +6,9 @@ import { IconButton } from '@material-ui/core'
 import RoleIcon from 'components/commons/atomics/role-icon/role-icon'
 
 import styles from './role-icon-list.module.scss'
+import { getSkills } from 'services/axios/public-api-calls'
 
-import roleList from 'data/mocked-values/role-list-mock'
+const roleList = await getSkills()
 
 const RoleIconList = ({ roles, clickable }) => {
 	let list
