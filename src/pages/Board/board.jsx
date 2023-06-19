@@ -21,8 +21,8 @@ const Board = () => {
 		<div className={styles.container}>
 			<TeamManager roles={roles} />
 			<div className={styles.board}>
-				{teams.map((card, index) => {
-					return <TeamCard key={card.title + '-' + index} data={card} />
+				{teams.map((card) => {
+					return <TeamCard key={card.id} data={card} />
 				})}
 			</div>
 		</div>

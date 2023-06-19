@@ -8,3 +8,11 @@ export async function getTeams() {
 			toast.error(error.response.data.errors[0])
 		})
 }
+
+export async function getTeam(id) {
+	return axios.get(`teams/${id}`)
+		.then(response =>  response.data)
+		.catch(error => {
+			toast.error(error.response.data.errors[0])
+		})
+}

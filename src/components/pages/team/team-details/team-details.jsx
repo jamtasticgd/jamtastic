@@ -6,13 +6,8 @@ import { useArrayHandler } from 'hooks/use-array-handler'
 import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import { Button, Dialog, Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core'
 import styles from './team-details.module.scss'
-import { joinTeam } from 'services/axios/auth-api-calls/teams'
 
-const TeamDetails = ({ data, open, onClose }) => {
-	function onJoinTeamClick() {
-		joinTeam(data)
-	}
-
+const TeamDetails = ({ data, open, onClose, onJoinTeam }) => {
 	return (
 		<Dialog open={open} onClose={onClose}>
 			<div className={styles.container}>
@@ -37,7 +32,7 @@ const TeamDetails = ({ data, open, onClose }) => {
 					</ListItem>
 				</List>
 				<div className={styles.btnContainer}>
-					<Button variant="contained" color="secondary" startIcon={<PersonAddIcon />} onClick={onJoinTeamClick}>
+					<Button variant="contained" color="secondary" startIcon={<PersonAddIcon />} onClick={onJoinTeam}>
 						Participar do time
 					</Button>
 				</div>
@@ -49,7 +44,8 @@ const TeamDetails = ({ data, open, onClose }) => {
 TeamDetails.propTypes = {
 	data: PropTypes.object.isRequired,
 	open: PropTypes.bool.isRequired,
-	onClose: PropTypes.func.isRequired
+	onClose: PropTypes.func.isRequired,
+	onJoinTeam: PropTypes.func.isRequired
 }
 
 export default TeamDetails
