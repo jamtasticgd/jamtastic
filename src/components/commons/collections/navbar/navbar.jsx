@@ -10,7 +10,7 @@ import { useUserContext } from 'contexts/UserContext'
 const Navbar = () => {
 	const isLoading = useLoaderContext()
 	const { name } = useUserContext()
-	const loggedIn = Boolean(name)
+	const loggedIn = !!name
 
 	const [anchorEl, setAnchorEl] = React.useState(null)
 
